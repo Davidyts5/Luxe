@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="LUXORA — Modern luxury fashion label for elevated wardrobes." />
+  <title>LUXORA — Modern Luxury Fashion</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">LUXORA</a>
+    </div>
+    <nav class="site-nav">
+      <a href="products.html?category=Women">Women</a>
+      <a href="products.html?category=Men">Men</a>
+      <a href="products.html?category=New%20Arrivals">New Arrivals</a>
+      <a href="products.html?category=Accessories">Accessories</a>
+      <a href="products.html?category=Sale" class="accent">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <form class="header-search" action="products.html" method="GET">
+        <input type="search" name="search" placeholder="Search looks, items..." />
+        <button type="submit" aria-label="Search">
+          <span>↵</span>
+        </button>
+      </form>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+      <a class="cart-link" href="cart.html">
+        Cart <span class="cart-count" data-cart-count>0</span>
+      </a>
+      <div class="auth-status" data-auth-status>
+        <a href="login.html">Login</a>
+        <a class="ghost" href="register.html">Create</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">FW25 Editorial</p>
+        <h1>Architectural tailoring for avant-garde wardrobes.</h1>
+        <p>Monochrome staples, precision knitwear, and modular accessories designed for fluid identities.</p>
+        <div class="hero-actions">
+          <a class="btn" href="products.html?category=New%20Arrivals">Shop New Arrivals</a>
+          <a class="btn ghost" href="products.html?category=Accessories">Discover Accessories</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <p>Featured Capsule</p>
+        <h3>Chromatic Silence</h3>
+        <p>Limited 50-piece drop exploring matte textures & sculpted silhouettes.</p>
+        <a href="product.html?id=lx-01">View Lookbook →</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>New Arrivals</h2>
+        <a href="products.html?category=New%20Arrivals">View all</a>
+      </div>
+      <div class="product-grid" id="homeNewArrivals"></div>
+    </section>
+
+    <section class="section split highlight">
+      <div>
+        <p class="eyebrow">Menswear</p>
+        <h2>Technical suiting engineered for motion.</h2>
+        <a class="btn outline" href="products.html?category=Men">Explore Men</a>
+      </div>
+      <div>
+        <p class="eyebrow">Accessories</p>
+        <h2>Modular carry systems with titanium detailing.</h2>
+        <a class="btn outline" href="products.html?category=Accessories">Explore Accessories</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>Editorial Picks</h2>
+      </div>
+      <div class="product-grid" id="homeEditorial"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong>LUXORA</strong>
+      <p>Minimal, premium, and conscious fashion house.</p>
+    </div>
+    <div>
+      <p>© <span id="year"></span> LUXORA. Crafted in Lagos & Paris.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      const arrivals = getProductsByCategory("New Arrivals").slice(0, 4);
+      const editorial = PRODUCTS.slice(0, 4);
+      renderProductCards(arrivals, "homeNewArrivals");
+      renderProductCards(editorial, "homeEditorial");
+    });
+  </script>
+</body>
+</html>

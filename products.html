@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shop the full LUXORA catalog — women, men, accessories, and more." />
+  <title>Shop All Products — LUXORA</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">LUXORA</a>
+    </div>
+    <nav class="site-nav">
+      <a href="products.html?category=Women">Women</a>
+      <a href="products.html?category=Men">Men</a>
+      <a href="products.html?category=New%20Arrivals">New Arrivals</a>
+      <a href="products.html?category=Accessories">Accessories</a>
+      <a href="products.html?category=Sale" class="accent">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <form class="header-search" action="products.html" method="GET">
+        <input type="search" name="search" placeholder="Search looks, items..." />
+        <button type="submit"><span>↵</span></button>
+      </form>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+      <a class="cart-link" href="cart.html">Cart <span class="cart-count" data-cart-count>0</span></a>
+      <div class="auth-status" data-auth-status>
+        <a href="login.html">Login</a>
+        <a class="ghost" href="register.html">Create</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="filters">
+      <div>
+        <label for="searchInput">Search</label>
+        <input type="search" id="searchInput" placeholder="Knits, coats, etc." />
+      </div>
+      <div>
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="Women">Women</option>
+          <option value="Men">Men</option>
+          <option value="New Arrivals">New Arrivals</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Sale">Sale</option>
+        </select>
+      </div>
+      <div>
+        <label for="priceFilter">Max Price ($)</label>
+        <input type="number" id="priceFilter" min="50" max="2000" step="10" placeholder="500" />
+      </div>
+    </div>
+    <div class="product-grid" id="productsGrid"></div>
+    <p class="muted" id="productCount"></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> LUXORA</p>
+  </footer>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", () => {
+      initProductListing();
+    });
+  </script>
+</body>
+</html>

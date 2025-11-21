@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Login to manage your LUXORA cart and orders." />
+  <title>Login — LUXORA</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+<body class="auth-body">
+  <main class="auth-card">
+    <a class="brand-link" href="index.html">LUXORA</a>
+    <h1>Welcome back</h1>
+    <p>Log in to sync your cart and fast-track checkout.</p>
+    <form id="login-form" class="auth-form">
+      <label>Email
+        <input type="email" name="email" placeholder="you@email.com" required />
+      </label>
+      <label>Password
+        <input type="password" name="password" placeholder="••••••••" required />
+      </label>
+      <button type="submit" class="btn">Login</button>
+      <p class="form-feedback" data-login-feedback></p>
+    </form>
+    <p class="muted">No account? <a href="register.html">Create one</a></p>
+  </main>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

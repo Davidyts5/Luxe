@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Create a LUXORA account to save looks and manage orders." />
+  <title>Create Account — LUXORA</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+<body class="auth-body">
+  <main class="auth-card">
+    <a class="brand-link" href="index.html">LUXORA</a>
+    <h1>Create account</h1>
+    <form id="register-form" class="auth-form">
+      <label>Full Name
+        <input type="text" name="name" placeholder="Ayo Adesina" required />
+      </label>
+      <label>Email
+        <input type="email" name="email" placeholder="you@email.com" required />
+      </label>
+      <label>Password
+        <input type="password" name="password" placeholder="At least 8 characters" required />
+      </label>
+      <label>Confirm Password
+        <input type="password" name="confirmPassword" placeholder="Repeat password" required />
+      </label>
+      <button type="submit" class="btn">Create Account</button>
+      <p class="form-feedback" data-register-feedback></p>
+    </form>
+    <p class="muted">Already registered? <a href="login.html">Login</a></p>
+  </main>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Secure checkout — complete your LUXORA order." />
+  <title>Checkout — LUXORA</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">LUXORA</a>
+    </div>
+    <nav class="site-nav">
+      <a href="products.html?category=Women">Women</a>
+      <a href="products.html?category=Men">Men</a>
+      <a href="products.html?category=New%20Arrivals">New Arrivals</a>
+      <a href="products.html?category=Accessories">Accessories</a>
+      <a href="products.html?category=Sale" class="accent">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <form class="header-search" action="products.html" method="GET">
+        <input type="search" name="search" placeholder="Search looks, items..." />
+        <button type="submit"><span>↵</span></button>
+      </form>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+      <a class="cart-link" href="cart.html">Cart <span class="cart-count" data-cart-count>0</span></a>
+      <div class="auth-status" data-auth-status>
+        <a href="login.html">Login</a>
+        <a class="ghost" href="register.html">Create</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section checkout-grid">
+    <section>
+      <h1>Checkout</h1>
+      <form id="checkout-form" class="checkout-form">
+        <label>Full Name
+          <input type="text" name="fullName" required />
+        </label>
+        <label>Email
+          <input type="email" name="email" required />
+        </label>
+        <label>Phone
+          <input type="tel" name="phone" required />
+        </label>
+        <label>Address Line 1
+          <input type="text" name="address1" required />
+        </label>
+        <label>City
+          <input type="text" name="city" required />
+        </label>
+        <label>Country
+          <input type="text" name="country" required />
+        </label>
+        <label>Postal Code
+          <input type="text" name="postal" required />
+        </label>
+        <button type="submit" class="btn">Pay with Paystack</button>
+        <p class="form-feedback" data-checkout-feedback></p>
+      </form>
+    </section>
+    <aside class="order-summary">
+      <h2>Order Summary</h2>
+      <div id="checkoutSummary"></div>
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <strong data-summary-subtotal>$0.00</strong>
+      </div>
+      <div class="summary-line">
+        <span>Shipping</span>
+        <strong data-summary-shipping>$25.00</strong>
+      </div>
+      <div class="summary-line total">
+        <span>Total</span>
+        <strong data-summary-total>$0.00</strong>
+      </div>
+      <p class="muted">All payments are secured via Paystack.</p>
+    </aside>
+  </main>
+
+  <div class="modal" id="paymentModal">
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Close modal">×</button>
+      <div id="paymentStatus"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> LUXORA</p>
+  </footer>
+
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/paystack.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", initCheckoutPage);
+  </script>
+</body>
+</html>

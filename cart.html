@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Review and manage your LUXORA cart before checkout." />
+  <title>Your Cart — LUXORA</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem("luxora-theme");
+      if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html">LUXORA</a>
+    </div>
+    <nav class="site-nav">
+      <a href="products.html?category=Women">Women</a>
+      <a href="products.html?category=Men">Men</a>
+      <a href="products.html?category=New%20Arrivals">New Arrivals</a>
+      <a href="products.html?category=Accessories">Accessories</a>
+      <a href="products.html?category=Sale" class="accent">Sale</a>
+    </nav>
+    <div class="header-actions">
+      <form class="header-search" action="products.html" method="GET">
+        <input type="search" name="search" placeholder="Search looks, items..." />
+        <button type="submit"><span>↵</span></button>
+      </form>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme">
+        <span class="theme-icon">◐</span>
+      </button>
+      <a class="cart-link active" href="cart.html">Cart <span class="cart-count" data-cart-count>0</span></a>
+      <div class="auth-status" data-auth-status>
+        <a href="login.html">Login</a>
+        <a class="ghost" href="register.html">Create</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="section">
+    <h1>Shopping Cart</h1>
+    <div id="cartContainer" class="cart-container">
+      <!-- Filled via JS -->
+    </div>
+    <div class="cart-actions">
+      <a class="btn ghost" href="products.html">Continue Shopping</a>
+      <a class="btn" href="checkout.html">Proceed to Checkout</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> LUXORA</p>
+  </footer>
+
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", renderCartPage);
+  </script>
+</body>
+</html>
